@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Para el amor de mi vida 💌</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(120deg, #ffdde1, #fcb69f);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      overflow-x: hidden;
+      padding: 20px;
+      animation: backgroundFlow 20s ease infinite;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.2);
+      max-width: 800px;
+      width: 100%;
+      animation: fadeIn 1s ease;
+    }
+
+    img {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      border-radius: 15px;
+      margin-top: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      animation: zoomIn 1s ease;
+    }
+
+    h1 {
+      font-size: 1.8em;
+      color: #e91e63;
+      margin-bottom: 15px;
+      animation: popIn 1s ease;
+    }
+
+    p {
+      font-size: 1.2em;
+      color: #444;
+      margin: 20px 0;
+      line-height: 1.6em;
+      animation: fadeIn 1s ease;
+    }
+
+    .btn {
+      background-color: #e91e63;
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      font-size: 1em;
+      border-radius: 50px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: 0.3s;
+      animation: heartbeat 2s infinite;
+    }
+
+    .btn:hover {
+      background-color: #c2185b;
+    }
+
+    #finalImg {
+      display: none;
+      width: 90%;
+      max-width: 600px;
+      margin-top: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 40px #ff4081;
+      animation: popIn 2s ease forwards;
+    }
+
+    #finalText {
+      display: none;
+      font-size: 3em;
+      color: #ff1493;
+      font-weight: bold;
+      margin-top: 20px;
+      text-shadow: 0 0 10px #fff, 0 0 20px #ff1493, 0 0 30px #ff1493;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    .heart {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: #ff4081;
+      transform: rotate(45deg);
+      animation: fall 8s linear infinite;
+      opacity: 0.8;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: #ff4081;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -7.5px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -7.5px;
+      top: 0;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.7); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    @keyframes fall {
+      0% {
+        top: -10px;
+        opacity: 1;
+      }
+      100% {
+        top: 110vh;
+        transform: rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes backgroundFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes glow {
+      0% { text-shadow: 0 0 10px #fff, 0 0 20px #ff1493; }
+      100% { text-shadow: 0 0 20px #fff, 0 0 40px #ff69b4, 0 0 60px #ff1493; }
+    }
+
+    audio {
+      display: none;
+    }
+
+    @media (max-width: 480px) {
+      h1 { font-size: 1.4em; }
+      p { font-size: 1em; }
+      .btn { padding: 10px 20px; font-size: 0.9em; }
+      #finalText { font-size: 2em; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card" id="card">
+    <h1>🎂 ¡Feliz Cumpleaños, mi amor! 💖</h1>
+    <img id="photo" src="https://res-console.cloudinary.com/dh8bimxjp/thumbnails/v1/image/upload/v1752981277/SW1hZ2VuX2RlX1doYXRzQXBwXzIwMjUtMDctMTlfYV9sYXNfMjEuMzQuNTJfZTMyZmQwODBfZ2xodDVj/drilldown" alt="Foto de ella">
+    <p id="message">
+      Desde que llegaste a mi vida, todo cambió. Ya no hay días grises, porque tú eres mi sol. Eres la razón por la que sonrío sin razón, la calma en mis días agitados y mi paz en medio del caos.
+    </p>
+    <button class="btn" onclick="next()">Siguiente ✨</button>
+  </div>
+  
+  <img id="finalImg" src="" alt="Foto de los dos">
+  <div id="finalText">🎉 ¡Feliz 22 años, mi amor! 🎉</div>
+
+  <audio id="music" src="https://www.bensound.com/bensound-music/bensound-love.mp3" autoplay loop></audio>
+
+  <script>
+    const photos = [
+      "https://res-console.cloudinary.com/dh8bimxjp/thumbnails/v1/image/upload/v1752980357/cGhvdG9fMjAyNS0wNy0xOV8yMS01Ny0wNl9jZmVmeWM=/drilldown",
+      "https://res-console.cloudinary.com/dh8bimxjp/thumbnails/v1/image/upload/v1752980357/cGhvdG9fMjAyNS0wNi0xM18xNC0xOS0wM19oem8yZWw=/drilldown",
+      "https://res-console.cloudinary.com/dh8bimxjp/thumbnails/v1/image/upload/v1752980984/cGhvdG9fMjAyNS0wNi0xM18xNC0xMy00MV9lcm1lcTk=/drilldown"
+    ];
+
+    const messages = [
+      "Desde que llegaste a mi vida, todo cambió. Ya no hay días grises, porque tú eres mi sol. Eres la razón por la que sonrío sin razón, la calma en mis días agitados y mi paz en medio del caos.",
+      "No hay palabras suficientes para describir lo que siento por ti. Tu amor me transformó, me enseñó a ver la vida con otros ojos, a amar con el alma y valorar cada instante contigo como el tesoro que es.",
+      "Agradezco cada día por tu existencia, por tu forma de mirar, de abrazar, de hacerme sentir que en este mundo hay un lugar donde pertenezco: tus brazos.",
+      "Hoy celebro tu vida, pero también la mía, porque tengo la fortuna de compartirla contigo. Eres mi amor eterno, mi compañera, mi todo."
+    ];
+
+    let index = 0;
+
+    function next() {
+      index++;
+      if (index < messages.length) {
+        document.getElementById("photo").src = photos[index % photos.length];
+        document.getElementById("message").textContent = messages[index];
+      } else {
+        document.getElementById("card").style.display = "none";
+        const finalImg = document.getElementById("finalImg");
+        finalImg.style.display = "block";
+        finalImg.src = "https://res-console.cloudinary.com/dh8bimxjp/thumbnails/v1/image/upload/v1752980356/cGhvdG9fMjAyNS0wNy0xNV8wOS0zOC01Nl93amh6ZHk=/drilldown";
+        document.getElementById("finalText").style.display = "block";
+        startHearts();
+      }
+    }
+
+    function startHearts() {
+      for (let i = 0; i < 150; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = 5 + Math.random() * 4 + "s";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 10000);
+      }
+    }
+  </script>
+
+</body>
+</html>
